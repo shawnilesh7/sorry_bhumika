@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sorry Bhumika ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ffd6e8, #ffc0cb);
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+    text-align: center;
+}
+
+.container {
+    position: relative;
+    top: 8%;
+    z-index: 2;
+}
+
+h1 {
+    color: #ff2e88;
+    font-size: 2.5rem;
+}
+
+p {
+    font-size: 1.1rem;
+    color: #333;
+    width: 70%;
+    margin: 10px auto;
+}
+
+img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid #ff66a3;
+    box-shadow: 0 0 20px rgba(255, 0, 100, 0.4);
+    margin-top: 15px;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 15px;
+    transition: 0.3s;
+}
+
+#yesBtn {
+    background-color: #ff4da6;
+    color: white;
+}
+
+#yesBtn:hover {
+    background-color: #e60073;
+}
+
+#noBtn {
+    background-color: #555;
+    color: white;
+    position: absolute;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Floating Roses */
+.rose {
+    position: absolute;
+    animation: float 7s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh); opacity: 0; }
+    30% { opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+/* Heart Explosion */
+.heart {
+    position: absolute;
+    font-size: 24px;
+    animation: explode 1s ease-out forwards;
+}
+
+@keyframes explode {
+    to {
+        transform: translate(var(--x), var(--y)) scale(1.5);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>I'm Sorry, Bhumika ❤️</h1>
+
+    <img src="bhumika.jpg" alt="Bhumika">
+
+    <p>
+        My love ❤️
+        I know we argued yesterday… and I hate that I hurt you.  
+        And now you even have fever since last night…  
+        I wish I could be there to take care of you.  
+        Your health is more important than anything. Always.  
+        Please forgive your slightly stupid but fully in love boyfriend? 🥺🌸
+        I'm really really sorry meri jaan
+    </p>
+
+    <button id="yesBtn">Yes, I forgive you 💖</button>
+    <button id="noBtn">No 😒</button>
+
+    <h2 id="loveMessage" class="hidden">
+        YAYYY 😭💗  
+        That’s my babyyyyy.  
+        I love you more than anything🌹  
+        Get well soon, my sweetheart.
+    </h2>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const loveMessage = document.getElementById("loveMessage");
+
+// No button runs away
+noBtn.addEventListener("mouseover", () => {
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+});
+
+// If she clicks No, redirect to Yes
+noBtn.addEventListener("click", () => {
+    yesBtn.click();
+});
+
+// Yes button action
+yesBtn.addEventListener("click", () => {
+    loveMessage.classList.remove("hidden");
+    createHearts();
+});
+
+// Floating roses 🌹
+function createRose() {
+    const rose = document.createElement("div");
+    rose.classList.add("rose");
+    rose.innerHTML = "🌹";
+    rose.style.left = Math.random() * 100 + "vw";
+    rose.style.fontSize = (20 + Math.random() * 20) + "px";
+    rose.style.animationDuration = (5 + Math.random() * 5) + "s";
+    document.body.appendChild(rose);
+    setTimeout(() => rose.remove(), 7000);
+}
+setInterval(createRose, 500);
+
+// Heart explosion 💥💖
+function createHearts() {
+    for (let i = 0; i < 30; i++) {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "💖";
+        heart.style.left = "50%";
+        heart.style.top = "50%";
+        heart.style.setProperty("--x", (Math.random() * 400 - 200) + "px");
+        heart.style.setProperty("--y", (Math.random() * 400 - 200) + "px");
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 1000);
+    }
+}
+</script>
+
+</body>
+</html>
