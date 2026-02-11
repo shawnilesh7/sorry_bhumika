@@ -134,26 +134,29 @@ const noBtn = document.getElementById("noBtn");
 const yesBtn = document.getElementById("yesBtn");
 const loveMessage = document.getElementById("loveMessage");
 
-// No button runs away
+// No button runs away but DOES NOT trigger Yes
 noBtn.addEventListener("mouseover", () => {
+    moveNoButton();
+});
+
+noBtn.addEventListener("click", () => {
+    moveNoButton();
+});
+
+function moveNoButton() {
     const x = Math.random() * (window.innerWidth - 100);
     const y = Math.random() * (window.innerHeight - 50);
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
-});
+}
 
-// If she clicks No, redirect to Yes
-noBtn.addEventListener("click", () => {
-    yesBtn.click();
-});
-
-// Yes button action
+// YES button shows message + hearts
 yesBtn.addEventListener("click", () => {
     loveMessage.classList.remove("hidden");
     createHearts();
 });
 
-// Floating roses 🌹
+// Floating roses
 function createRose() {
     const rose = document.createElement("div");
     rose.classList.add("rose");
@@ -166,7 +169,7 @@ function createRose() {
 }
 setInterval(createRose, 500);
 
-// Heart explosion 💥💖
+// Heart explosion
 function createHearts() {
     for (let i = 0; i < 30; i++) {
         const heart = document.createElement("div");
@@ -184,3 +187,4 @@ function createHearts() {
 
 </body>
 </html>
+
